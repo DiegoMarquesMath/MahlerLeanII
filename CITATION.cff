@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "Cite a checked release and its exact scope; this initial development version is not verified."
+type: software
+title: "MahlerLeanII: Lean 4 formalization project for Mahler's Problem on Liouville Numbers II"
+authors:
+  - family-names: "Marques"
+    given-names: "Diego"
+version: "0.1.0-dev"
+abstract: "Development sources for selected results of Part II. Compilation and axiom audit are pending; see docs/STATUS.md."
+keywords:
+  - Lean 4
+  - Liouville numbers
+  - Diophantine approximation
+  - formalized mathematics
