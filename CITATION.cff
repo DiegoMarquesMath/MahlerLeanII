@@ -1,12 +1,12 @@
 cff-version: 1.2.0
-message: "Cite a checked release and its exact scope; this initial development version is not verified."
+message: "Cite the commit or release used and the results it covers."
 type: software
-title: "MahlerLeanII: Lean 4 formalization project for Mahler's Problem on Liouville Numbers II"
+title: "MahlerLeanII: Lean 4 proofs for Mahler's Problem on Liouville Numbers II. Rational Maps"
 authors:
   - family-names: "Marques"
     given-names: "Diego"
-version: "0.1.0-dev"
-abstract: "Development sources for selected results of Part II. Compilation and axiom audit are pending; see docs/STATUS.md."
+repository-code: "https://github.com/DiegoMarquesMath/MahlerLeanII"
+abstract: "Lean 4 proofs of the elementary inclusions, the obstruction criterion and the determinant identity for normalized rational interpolation. See docs/STATUS.md for the correspondence with the paper."
 keywords:
   - Lean 4
   - Liouville numbers

@@ -1,6 +1,12 @@
 # Formalization roadmap
 
-## First checkpoint: make the initial project compile
+The current priority is the stability and height bounds in Section 4. See
+`docs/SECTION4.md` for the active work and its pending parts. Sections 1–3
+have been reviewed manually by the author; this is not a claim that all
+their results have been formalized. The earlier order below is retained
+as a dependency inventory, not as a requirement to finish Sections 2–3 first.
+
+## Reproducing the existing proofs
 
 Run `lake exe cache get` and `bash scripts/check.sh`. Resolve every elaboration
 or proof error without changing the mathematical statements, introducing
@@ -31,9 +37,9 @@ handled without assuming every image is Liouville.
 
 ## Necessity of the coefficient condition
 
-1. Reconstruction: prove the kernel dimension, Vandermonde minor,
-   perturbation bound, preservation of a pole-free compact interval and
-   common-denominator estimate.
+1. Reconstruction: build on the verified determinant identity to prove the
+   perturbation bound, exclusion of poles on the interval and the common-
+   denominator estimate.
 2. Counting: prove the elementary rational supply and separation bounds,
    then the small and large target-height estimates. Keep constants uniform
    in the source interval and target cutoff. The sets of scales may depend

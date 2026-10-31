@@ -1,3 +1,6 @@
 import MahlerLeanII.Definitions
 import MahlerLeanII.Basic
 import MahlerLeanII.Obstruction
+import MahlerLeanII.ReconstructionAlgebra
+import MahlerLeanII.ReconstructionDeterminant
+import MahlerLeanII.ReconstructionMatrix

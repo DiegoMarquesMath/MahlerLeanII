@@ -12,8 +12,11 @@ are the stable references if theorem numbering changes.
 
 ## Current scope
 
-Every Lean item below has status **candidate source, not yet compiler-checked**.
-No item may be reported as verified until the complete checking command passes.
+Every Lean item below has status **compilation and project axiom audit passed
+in the author's reported run** under Lean 4.24.0 on macOS. The run uses the
+corrected `Lean.logInfo` calls in the audit. See `docs/VERIFICATION.md` for
+the reported evidence and its limits. GitHub Actions reproduction and a
+tagged release are still pending.
 
 | Manuscript | Lean declaration | File |
 | --- | --- | --- |
@@ -25,7 +28,11 @@ No item may be reported as verified until the complete checking command passes.
 | Negation at one scale | `not_approximationAt_iff` | `MahlerLeanII/Obstruction.lean` |
 | Lemma 5.1, `lem:obstruction` | `not_scaleApproximable_iff` | `MahlerLeanII/Obstruction.lean` |
 
-All declarations in the table are in namespace `MahlerLeanII`.
+All declarations in the table are in namespace `MahlerLeanII`. The audit also
+requires 18 declarations in `MahlerLeanII.Reconstruction`. They establish the
+algebraic and determinant steps of Lemma 4.1, including
+`eq:polynomial-map` and `eq:vandermonde-minor`. The correspondence for both
+blocks is listed in [the Section 4 record](SECTION4.md).
 
 ## Correspondence details
 
@@ -46,9 +53,8 @@ depend on the later quantified scale.
 
 `rationalOrLiouville` uses mathlib's existing `Liouville` predicate, whose
 approximations have integer denominators greater than one, nonzero error and
-strict bounds. The proposed proof doubles numerator and denominator so that
-an initial denominator of one causes no gap. This proof differs in presentation
-from the manuscript but aims at the same implication.
+strict bounds. The proof doubles numerator and denominator so that
+an initial denominator of one causes no gap. The conclusion is the inclusion stated in the manuscript.
 
 `ObstructedAt` records the strict lower bound for all admissible fractions.
 The obstruction theorem quantifies over every cutoff `H₀ ≥ 2`; its witnessing
@@ -61,7 +67,7 @@ before the universally quantified denominator exponent and cutoff.
 - Proposition 2.3: field structure (`prop:field`).
 - The size properties and inclusion of strong Liouville numbers.
 - Proposition 3.1: rational evaluation (`prop:evaluation`).
-- Lemma 4.1: reconstruction (`lem:reconstruction`).
+- The perturbation, coefficient error, pole exclusion and rational height estimates needed to complete Lemma 4.1 (`lem:reconstruction`).
 - Proposition 5.3: counting (`prop:counting`).
 - Proposition 6.1: sparse-scale escape (`prop:fusion`).
 - Escape, classification, rational fibers and their consequences.
@@ -70,8 +76,7 @@ before the universally quantified denominator exponent and cutoff.
 
 ## Evidence required to change the status
 
-Record the precise commit tested, the successful output of
+For every further verification claim, record the precise commit tested, the successful output of
 `bash scripts/check.sh`, and the GitHub Actions run for that same commit.
 Review each theorem statement against the manuscript separately from checking
-the proof. A successful build of these initial files would verify only the
-scope listed above, not the unimplemented results.
+the proof. The verification record distinguishes the author’s local run from a GitHub Actions result.

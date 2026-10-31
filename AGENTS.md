@@ -1,7 +1,9 @@
 # Working instructions for MahlerLeanII
 
 This project formalizes results of Diego Marques's Part II manuscript. The
-initial sources have not yet compiled. Read README.md and docs/STATUS.md first.
+initial mathematical modules and both Section 4 blocks passed the author’s
+local build and axiom audit (23 required declarations). Read README.md
+and docs/STATUS.md first.
 
 ## Required mathematical fidelity
 
@@ -37,3 +39,11 @@ initial sources have not yet compiled. Read README.md and docs/STATUS.md first.
 - Do not mark all of Part II as formalized when only the initial lemmas pass.
 - Never store access tokens, passwords, local credential files, `.lake`, or
   downloaded toolchain binaries in Git.
+
+## Current priority
+
+The author requested that formalization continue from Section 4, having
+reviewed Sections 1–3 manually. Follow docs/SECTION4.md before resuming the
+earlier roadmap. Manual review does not authorize assuming earlier results
+as Lean axioms. The reconstruction work is over the real polynomial ring and
+can proceed independently of the unformalized coefficient-field results.
