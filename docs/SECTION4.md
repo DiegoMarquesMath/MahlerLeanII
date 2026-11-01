@@ -86,17 +86,24 @@ declarations. The author’s Lean 4.24.0 run passed all of these checks. See
   the normalized rational function. Its existence is quantified before any
   choice of abscissae.
 
-## Remaining parts of Lemma 4.1
+## Quantitative reconstruction for (5.14)
 
-The following steps remain to complete the formal proof:
+The module `RationalReconstruction.lean` proves the following conclusions.
 
-1. Uniform determinant and cofactor bounds on the compact interval, including
-   the perturbation estimate and the existence of the required constants.
-2. Cramer's rule and the coefficient error bound `C₀ δ/V`.
-3. The reconstructed denominator's nonvanishing on the whole interval and the
-   resulting interpolation identities.
-4. Clearing rational denominators and proving the common-denominator estimate
-   `h ≤ C₀ S^(n*d) B^n`, with the manuscript's exact constant dependencies.
+| Paper | Declaration in `MahlerLeanII.Reconstruction` | Content |
+| --- | --- | --- |
+| (4.2) | `normalized_stability_on_compact` | The perturbed system is invertible and its Cramer vector differs from the original free coefficients by at most `C δ / V` in the sup norm. |
+| Integer row clearing in (4.3) | `normalized_rational_height` | The same Cramer vector has one positive denominator. Fractions representing both coordinates may be unreduced. |
+| (4.2), (4.3) together | `rational_reconstruction_bounds` | For rational samples, a single integer vector and denominator satisfy the error bound and `h ≤ C₀ S^(n*d) B^n`. Both constants precede all sample and height quantifiers. |
 
-Neither the complete stable interpolation lemma nor the counting or Cantor
-construction is claimed as formalized by these two blocks.
+The determinant and its Cramer numerators have the same uniform Lipschitz
+bound on boxes. The exact determinant gives a lower bound proportional to
+the absolute Vandermonde product; perturbing the ordinates by at most
+`c₀ V` preserves half that lower bound. Clearing row `i` of the system and
+its right side by `qᵢ^d bᵢ` gives an integer determinant whose absolute
+value is the common denominator.
+
+These conclusions supply the reconstruction estimates invoked by the
+counting proof. To cover the full interpolation statement of Lemma 4.1 one
+must additionally construct the perturbed monic pair, show that its
+denominator has no zeros on the whole interval, and identify its values.

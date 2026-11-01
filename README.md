@@ -8,11 +8,15 @@ The author ran the build and axiom audit on macOS with Lean 4.24.0 on
 the elementary inclusions in Lemma 2.1, the obstruction criterion in Lemma 5.1
 and the algebraic part of the reconstruction argument in Lemma 4.1.
 
-For reconstruction, the code proves the determinant formula for the normalized
-interpolation matrix, the existence of a nonzero factor independent of the
-abscissae, and nonsingularity at distinct abscissae outside the poles. The
-stability and common-denominator estimates in Lemma 4.1 remain open in this
-formalization, as do the counting, escape and classification theorems.
+For reconstruction, `Reconstruction.rational_reconstruction_bounds` proves
+(4.2) and (4.3) for the **same** integer vector and positive denominator.
+The constants depend on the normalized polynomial pair and the pole-free
+compact set and are chosen before the rational samples and their heights.
+`Reconstruction.normalized_stability_on_compact` also gives the coefficient
+error for arbitrary real ordinates. These are the estimates used in (5.14).
+The global pole exclusion for the perturbed polynomial is a separate part
+of Lemma 4.1. The counting, escape and classification results are tracked
+in the roadmap.
 
 See the [correspondence with the paper](docs/STATUS.md),
 [Section 4 declarations](docs/SECTION4.md) and [verification record](docs/VERIFICATION.md).

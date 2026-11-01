@@ -28,7 +28,16 @@ run_cmd do
     `MahlerLeanII.Reconstruction.normalized_matrix_eq_divided_evaluation,
     `MahlerLeanII.Reconstruction.normalized_det_factorization,
     `MahlerLeanII.Reconstruction.normalized_det_ne_zero,
-    `MahlerLeanII.Reconstruction.reconstruction_determinant_constant]
+    `MahlerLeanII.Reconstruction.reconstruction_determinant_constant,
+    `MahlerLeanII.Reconstruction.normalized_system_exact,
+    `MahlerLeanII.Reconstruction.determinant_box_bounds,
+    `MahlerLeanII.Reconstruction.cramer_of_solution,
+    `MahlerLeanII.Reconstruction.common_denominator_of_row_clearing,
+    `MahlerLeanII.Reconstruction.normalized_rational_height,
+    `MahlerLeanII.Reconstruction.nodeSeparation_pos,
+    `MahlerLeanII.Reconstruction.normalized_stability_on_compact,
+    `MahlerLeanII.Reconstruction.nodeSeparation_eq,
+    `MahlerLeanII.Reconstruction.rational_reconstruction_bounds]
   for name in required do
     unless env.contains name do
       throwError "Required declaration missing: {name}"

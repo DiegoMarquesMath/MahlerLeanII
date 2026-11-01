@@ -15,8 +15,8 @@ are the stable references if theorem numbering changes.
 Every Lean item below has status **compilation and project axiom audit passed
 in the author's reported run** under Lean 4.24.0 on macOS. The run uses the
 corrected `Lean.logInfo` calls in the audit. See `docs/VERIFICATION.md` for
-the reported evidence and its limits. GitHub Actions reproduction and a
-tagged release are still pending.
+the reported evidence and its limits. GitHub Actions also passed for the published determinant revision
+[`96b8916`](https://github.com/DiegoMarquesMath/MahlerLeanII/actions/runs/41226240588).
 
 | Manuscript | Lean declaration | File |
 | --- | --- | --- |
@@ -28,11 +28,14 @@ tagged release are still pending.
 | Negation at one scale | `not_approximationAt_iff` | `MahlerLeanII/Obstruction.lean` |
 | Lemma 5.1, `lem:obstruction` | `not_scaleApproximable_iff` | `MahlerLeanII/Obstruction.lean` |
 
-All declarations in the table are in namespace `MahlerLeanII`. The audit also
-requires 18 declarations in `MahlerLeanII.Reconstruction`. They establish the
+All declarations in the table are in namespace `MahlerLeanII`. The published determinant revision also
+required 18 declarations in `MahlerLeanII.Reconstruction`. They establish the
 algebraic and determinant steps of Lemma 4.1, including
 `eq:polynomial-map` and `eq:vandermonde-minor`. The correspondence for both
 blocks is listed in [the Section 4 record](SECTION4.md).
+
+The next nine required declarations cover quantitative coefficient reconstruction.
+The joint theorem is `Reconstruction.rational_reconstruction_bounds`.
 
 ## Correspondence details
 
@@ -67,7 +70,7 @@ before the universally quantified denominator exponent and cutoff.
 - Proposition 2.3: field structure (`prop:field`).
 - The size properties and inclusion of strong Liouville numbers.
 - Proposition 3.1: rational evaluation (`prop:evaluation`).
-- The perturbation, coefficient error, pole exclusion and rational height estimates needed to complete Lemma 4.1 (`lem:reconstruction`).
+- The reconstructed monic pair, its pole exclusion on the entire interval and its interpolation identities in the full Lemma 4.1.
 - Proposition 5.3: counting (`prop:counting`).
 - Proposition 6.1: sparse-scale escape (`prop:fusion`).
 - Escape, classification, rational fibers and their consequences.
