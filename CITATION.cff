@@ -6,7 +6,7 @@ authors:
   - family-names: "Marques"
     given-names: "Diego"
 repository-code: "https://github.com/DiegoMarquesMath/MahlerLeanII"
-abstract: "Lean 4 proofs of the elementary inclusions, the obstruction criterion and the determinant identity for normalized rational interpolation. See docs/STATUS.md for the correspondence with the paper."
+abstract: "Lean 4 formalization of the three equivalent conditions of Theorem 1.2 for nonconstant real rational functions, including the construction of the coefficient subfield and the proof of local necessity."
 keywords:
   - Lean 4
   - Liouville numbers

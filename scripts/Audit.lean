@@ -45,7 +45,18 @@ run_cmd do
     `MahlerLeanII.Counting.obstructed_scales_exclude_large_blocks,
     `MahlerLeanII.Counting.small_denominator_count,
     `MahlerLeanII.Counting.two_height_count,
-    `MahlerLeanII.Escape.point_escape_of_sparse_count]
+    `MahlerLeanII.Escape.point_escape_of_sparse_count,
+    `MahlerLeanII.Evaluation.rational_evaluation_control,
+    `MahlerLeanII.Evaluation.jointFast_cons,
+    `MahlerLeanII.Evaluation.scale_quotient,
+    `MahlerLeanII.Evaluation.rationalOrLiouville_of_jointFast,
+    `MahlerLeanII.coefficientSubfield,
+    `MahlerLeanII.mem_coefficientSubfield,
+    `MahlerLeanII.coefficientEmbedding,
+    `MahlerLeanII.definedOver_iff_normalized_coefficients,
+    `MahlerLeanII.evaluation_of_coefficients,
+    `MahlerLeanII.escape_of_bad_coefficients,
+    `MahlerLeanII.rational_classification]
   for name in required do
     unless env.contains name do
       throwError "Required declaration missing: {name}"

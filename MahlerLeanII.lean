@@ -13,3 +13,10 @@ import MahlerLeanII.ObstructedCounting
 import MahlerLeanII.SmallDenominators
 import MahlerLeanII.TwoHeightCount
 import MahlerLeanII.SparseEscape
+import MahlerLeanII.EvaluationControl
+import MahlerLeanII.EvaluationArithmetic
+import MahlerLeanII.CoefficientField
+import MahlerLeanII.RationalCoefficients
+import MahlerLeanII.RationalEvaluation
+import MahlerLeanII.RationalEscape
+import MahlerLeanII.Classification

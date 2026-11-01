@@ -1,5 +1,15 @@
 # Verification record
 
+## Classification
+
+The audit requires `MahlerLeanII.rational_classification` and checks its
+transitive axiom dependencies. In the GitHub Actions log, search for
+`AUDITED MahlerLeanII.rational_classification:`. The build and complete
+audit must both succeed at the revision cited. The retained artifact is
+`verification-log`.
+
+## Earlier determinant revision
+
 On 31 October 2026, the author ran `bash scripts/check.sh` on the Mac checkout
 after applying the two Section 4 patches. The transcript identifies Lean
 4.24.0 for `arm64-apple-darwin23.6.0`, compiler commit
