@@ -1,82 +1,48 @@
-# Manuscript correspondence and verification status
+# Correspondence with the manuscript
 
-## Source manuscript
+The manuscript is Diego Marques, *Mahler's Problem on Liouville Numbers II.
+Rational Maps*. The source used for the correspondence is `2-29OCT.tex`,
+SHA-256 `bbebf03f5073299afc3e5403897466b5e9a50d082a6c8c372d63ad6e0b14e117`.
 
-- Title: *Mahler's Problem on Liouville Numbers II. Rational Maps*.
-- Author: Diego Marques.
-- Source supplied for this development: `2-29OCT.tex`.
-- SHA-256: `bbebf03f5073299afc3e5403897466b5e9a50d082a6c8c372d63ad6e0b14e117`.
+## Theorem 1.2
 
-The manuscript itself is not included in this repository. LaTeX labels below
-are the stable references if theorem numbering changes.
+[`rational_classification`](../MahlerLeanII/Classification.lean) states the
+three-way equivalence in `thm:classification` with `List.TFAE`. The only
+hypothesis on `R : RatFunc ℝ` is nonconstancy, expressed by exclusion from
+the image of `RatFunc.C`.
 
-## Current scope
+| Paper | Lean |
+| --- | --- |
+| (i) Membership in the rational function field over the coefficient field | Membership in the image of the ring homomorphism `coefficientEmbedding coefficientSubfield` |
+| (ii) Rational or Liouville values at every Liouville argument off the poles | `Set.MapsTo` on the intersection of mathlib's `Liouville` set with `realDomain R` |
+| (iii) The same inclusion on some nonempty open interval in the domain | `Set.Nonempty`, `IsOpen`, `Set.OrdConnected`, containment in `realDomain R` and the restricted `Set.MapsTo` predicate |
 
-Every Lean item below has status **compilation and project axiom audit passed
-in the author's reported run** under Lean 4.24.0 on macOS. The run uses the
-corrected `Lean.logInfo` calls in the audit. See `docs/VERIFICATION.md` for
-the reported evidence and its limits. GitHub Actions reproduction and a
-tagged release are still pending.
+The domain is defined by the nonvanishing of mathlib's canonical reduced
+denominator. Evaluation is `RatFunc.eval (RingHom.id ℝ)`. The codomain set
+uses the ordinary image of the rationals in the reals and mathlib's
+Liouville predicate.
 
-| Manuscript | Lean declaration | File |
+## Proof dependencies
+
+All declarations below are in the namespace `MahlerLeanII`.
+
+| Manuscript result | Lean declaration | Role |
 | --- | --- | --- |
-| Definition 1.1, `def:field` | `ApproximationAt`, `ScaleApproximable`, `coefficientSet` | `MahlerLeanII/Definitions.lean` |
-| Lemma 2.1, `lem:elementary-field`, rational inclusion | `rational_scaleApproximable` | `MahlerLeanII/Basic.lean` |
-| Lemma 2.1, irrational case | `liouville_of_scaleApproximable_of_irrational` | `MahlerLeanII/Basic.lean` |
-| Lemma 2.1, inclusion in the rationals union Liouville numbers | `scaleApproximable_rationalOrLiouville` | `MahlerLeanII/Basic.lean` |
-| Definition of obstructed scales, `eq:obstructed-set` | `ObstructedAt` | `MahlerLeanII/Definitions.lean` |
-| Negation at one scale | `not_approximationAt_iff` | `MahlerLeanII/Obstruction.lean` |
-| Lemma 5.1, `lem:obstruction` | `not_scaleApproximable_iff` | `MahlerLeanII/Obstruction.lean` |
+| Definition 1.1 | `ScaleApproximable` | At each positive order, one exponent and one cutoff work at every subsequent integer scale. |
+| Lemma 2.1 | `rational_scaleApproximable`, `scaleApproximable_rationalOrLiouville` | Elementary inclusions. |
+| Lemma 2.2 | `simultaneous_approximation` | One denominator for a finite tuple at each sufficiently large scale. |
+| Proposition 2.3 | `coefficientSubfield`, `mem_coefficientSubfield` | Field operations preserve the defining property. |
+| Remark 2.4 | `definedOver_iff_normalized_coefficients` | Scalar extension agrees with membership of every normalized coefficient. |
+| Proposition 3.1 | `evaluation_of_coefficients` | A rational function with such coefficients takes rational or Liouville values at Liouville arguments off its poles. |
+| Lemma 4.1, (4.2) and (4.3) | `Reconstruction.rational_reconstruction_bounds` | The same reconstructed vector has both the perturbation and denominator bounds. See [Section 4](SECTION4.md). |
+| Lemma 5.1 | `not_scaleApproximable_iff` | One obstruction order precedes the quantifiers on denominator exponents and cutoffs. |
+| Proposition 5.3 | `Counting.two_height_count` | Uniform sparse-scale count for finite families of resonant centers. |
+| Proposition 6.1, single-point consequence | `Escape.point_escape_of_sparse_count` | Nested intervals and exclusion of rational and Liouville images, including unreduced rational representations. |
+| Theorem 1.3, single-point consequence | `escape_of_bad_coefficients` | Every nonempty open pole-free interval contains a witness when a normalized coefficient fails the field condition. |
+| Theorem 1.2 | `rational_classification` | All three implications. |
 
-All declarations in the table are in namespace `MahlerLeanII`. The audit also
-requires 18 declarations in `MahlerLeanII.Reconstruction`. They establish the
-algebraic and determinant steps of Lemma 4.1, including
-`eq:polynomial-map` and `eq:vandermonde-minor`. The correspondence for both
-blocks is listed in [the Section 4 record](SECTION4.md).
-
-## Correspondence details
-
-`ScaleApproximable x` states that for every positive integer order `N`,
-there exist a positive integer exponent `D` and an integer cutoff `H₀ ≥ 2`
-such that **every** integer `H ≥ H₀` admits an integer numerator `p` and
-a natural denominator `1 ≤ q ≤ H^D` with
-
-```text
-abs (x - p / q) ≤ 1 / ((H : Real) * q)^N.
-```
-
-All orders, scales and denominators are natural numbers with explicit bounds;
-the numerator is an integer. This represents the positive integer quantifiers
-in the paper. Fractions are not required to be reduced, and equality is
-allowed in the approximation bound. Neither the exponent nor the cutoff can
-depend on the later quantified scale.
-
-`rationalOrLiouville` uses mathlib's existing `Liouville` predicate, whose
-approximations have integer denominators greater than one, nonzero error and
-strict bounds. The proof doubles numerator and denominator so that
-an initial denominator of one causes no gap. The conclusion is the inclusion stated in the manuscript.
-
-`ObstructedAt` records the strict lower bound for all admissible fractions.
-The obstruction theorem quantifies over every cutoff `H₀ ≥ 2`; its witnessing
-scale therefore also satisfies `H ≥ 2`. The approximation order is fixed
-before the universally quantified denominator exponent and cutoff.
-
-## Not yet formalized
-
-- Lemma 2.2: simultaneous approximation (`lem:synchronization`).
-- Proposition 2.3: field structure (`prop:field`).
-- The size properties and inclusion of strong Liouville numbers.
-- Proposition 3.1: rational evaluation (`prop:evaluation`).
-- The perturbation, coefficient error, pole exclusion and rational height estimates needed to complete Lemma 4.1 (`lem:reconstruction`).
-- Proposition 5.3: counting (`prop:counting`).
-- Proposition 6.1: sparse-scale escape (`prop:fusion`).
-- Escape, classification, rational fibers and their consequences.
-- The example outside the field generated by the fixed-gap class.
-- The absence of a uniform escape exponent.
-
-## Evidence required to change the status
-
-For every further verification claim, record the precise commit tested, the successful output of
-`bash scripts/check.sh`, and the GitHub Actions run for that same commit.
-Review each theorem statement against the manuscript separately from checking
-the proof. The verification record distinguishes the author’s local run from a GitHub Actions result.
+Theorem 1.2 only needs one counterexample in each interval. The proof follows
+one branch of the construction in Section 6. The perfect set and uniform
+irrationality-exponent conclusions of Theorem 1.3, the remaining assertions
+of the full interpolation lemma, and the subsequent corollaries and examples
+are outside this verification claim.

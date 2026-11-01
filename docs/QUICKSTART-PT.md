@@ -1,18 +1,19 @@
-# Reproduzir a verificação
+# Reproduzir a verificação do Teorema 1.2
 
-Com elan instalado, clone o repositório e rode os comandos abaixo na pasta
-do projeto.
+Com elan instalado, execute na pasta do projeto.
 
 ```bash
 lake exe cache get
 bash scripts/check.sh
 ```
 
-O resultado fica em `build/verification.log`. Em 31 de outubro de 2026,
-o autor executou o script em seu Mac com Lean 4.24.0 e as 23 declarações
-exigidas pela auditoria passaram. O [registro da seção 4](SECTION4.md)
-identifica as provas correspondentes ao determinante de reconstrução.
+Para localizar a declaração principal na auditoria, execute
 
-Para citar o código, abra a aba **Actions** no GitHub, confira que a execução
-**Lean verification** passou no commit escolhido e use o hash completo desse
-commit conforme o [modelo de referência](CITATION.md).
+```bash
+grep 'AUDITED MahlerLeanII.rational_classification:' build/verification.log
+```
+
+O teorema está em [Classification.lean](../MahlerLeanII/Classification.lean).
+A [correspondência com o artigo](STATUS.md) identifica as três condições
+e distingue a classificação da conclusão de Cantor do Teorema 1.3.
+O [modelo de citação](CITATION.md) usa o hash da versão auditada.
