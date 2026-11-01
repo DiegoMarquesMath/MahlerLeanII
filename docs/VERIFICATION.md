@@ -2,11 +2,22 @@
 
 ## Classification
 
-The audit requires `MahlerLeanII.rational_classification` and checks its
-transitive axiom dependencies. In the GitHub Actions log, search for
-`AUDITED MahlerLeanII.rational_classification:`. The build and complete
-audit must both succeed at the revision cited. The retained artifact is
-`verification-log`.
+GitHub Actions ran `bash scripts/check.sh` successfully on the
+[proof commit `668b542bbd5b`](https://github.com/DiegoMarquesMath/MahlerLeanII/tree/668b542bbd5bb582e0dbf534e71375026c52b5fd).
+The [workflow log](https://github.com/DiegoMarquesMath/MahlerLeanII/actions/runs/41273103486) records the clean build, the individual
+source checks with warnings treated as errors and the axiom audit.
+All 51 required declarations were present. In particular the log contains
+
+```text
+AUDITED MahlerLeanII.rational_classification: [propext, Quot.sound, Classical.choice]
+All project declarations use only the permitted standard axioms.
+Build and axiom audit passed for the current declared scope.
+```
+
+Earlier stages were verified independently at
+[coefficient reconstruction](https://github.com/DiegoMarquesMath/MahlerLeanII/actions/runs/41271784169)
+and [sparse counting and point escape](https://github.com/DiegoMarquesMath/MahlerLeanII/actions/runs/41272817424).
+The [correspondence table](STATUS.md) identifies the manuscript statements covered.
 
 ## Earlier determinant revision
 
