@@ -8,3 +8,8 @@ import MahlerLeanII.ReconstructionCramer
 import MahlerLeanII.ReconstructionStability
 import MahlerLeanII.ReconstructionHeight
 import MahlerLeanII.RationalReconstruction
+import MahlerLeanII.Synchronization
+import MahlerLeanII.ObstructedCounting
+import MahlerLeanII.SmallDenominators
+import MahlerLeanII.TwoHeightCount
+import MahlerLeanII.SparseEscape

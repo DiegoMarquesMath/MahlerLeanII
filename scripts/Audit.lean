@@ -37,7 +37,15 @@ run_cmd do
     `MahlerLeanII.Reconstruction.nodeSeparation_pos,
     `MahlerLeanII.Reconstruction.normalized_stability_on_compact,
     `MahlerLeanII.Reconstruction.nodeSeparation_eq,
-    `MahlerLeanII.Reconstruction.rational_reconstruction_bounds]
+    `MahlerLeanII.Reconstruction.rational_reconstruction_bounds,
+    `MahlerLeanII.simultaneous_list,
+    `MahlerLeanII.simultaneous_approximation,
+    `MahlerLeanII.Counting.twice_pairCount,
+    `MahlerLeanII.Counting.farey_vandermonde_lower,
+    `MahlerLeanII.Counting.obstructed_scales_exclude_large_blocks,
+    `MahlerLeanII.Counting.small_denominator_count,
+    `MahlerLeanII.Counting.two_height_count,
+    `MahlerLeanII.Escape.point_escape_of_sparse_count]
   for name in required do
     unless env.contains name do
       throwError "Required declaration missing: {name}"
