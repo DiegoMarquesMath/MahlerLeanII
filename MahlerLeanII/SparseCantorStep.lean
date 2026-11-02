@@ -157,12 +157,10 @@ theorem exists_sparse_binary_step {f : ℝ → ℝ} {I : Set ℝ} {M L : ℝ} {t
     dsimp [leftU,rightL,lo,hi]
     linarith [ρpos]
 
-  have hleft (x : ℝ) (hx : x ∈ Icc lo leftU) : x ∈ Icc lo hi := by
-    dsimp [leftU] at hx
-    exact ⟨hx.1,by linarith [hx.2,hseparate]⟩
-  have hright (x : ℝ) (hx : x ∈ Icc rightL hi) : x ∈ Icc lo hi := by
-    dsimp [rightL] at hx
-    exact ⟨by linarith [hx.1,hseparate],hx.2⟩
+  have hleft (x : ℝ) (hx : x ∈ Icc lo leftU) : x ∈ Icc lo hi :=
+    ⟨hx.1, hx.2.trans (hseparate.trans hrightL).le⟩
+  have hright (x : ℝ) (hx : x ∈ Icc rightL hi) : x ∈ Icc lo hi :=
+    ⟨(hleftU.trans hseparate).le.trans hx.1, hx.2⟩
 
   have hnested_left (x : ℝ) (hx : x ∈ Icc lo leftU) : x ∈ Ioo v.l v.u := by
     have hxlo := hx.1
