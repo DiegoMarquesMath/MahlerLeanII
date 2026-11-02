@@ -13,7 +13,7 @@ set of Liouville inputs with one common target-denominator cutoff.
 
 noncomputable section
 namespace MahlerLeanII.Escape
-open Set
+open Set MahlerLeanII.Counting
 
 /-- Full Cantor version of Proposition 6.1, using the unchanged source
 and target estimates and a common cutoff across all Cantor branches. -/
