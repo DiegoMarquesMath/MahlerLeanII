@@ -22,3 +22,4 @@ import MahlerLeanII.RationalEscape
 import MahlerLeanII.Classification
 import MahlerLeanII.SparseCantorStep
 import MahlerLeanII.SparseCantorTree
+import MahlerLeanII.SparseCantorBranches
