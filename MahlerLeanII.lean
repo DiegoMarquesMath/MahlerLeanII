@@ -20,3 +20,10 @@ import MahlerLeanII.RationalCoefficients
 import MahlerLeanII.RationalEvaluation
 import MahlerLeanII.RationalEscape
 import MahlerLeanII.Classification
+import MahlerLeanII.SparseCantorStep
+import MahlerLeanII.SparseCantorTree
+import MahlerLeanII.SparseCantorBranches
+import MahlerLeanII.SparseCantorSubtree
+import MahlerLeanII.SparseCantorTopology
+import MahlerLeanII.SparseCantor
+import MahlerLeanII.RationalCantorEscape

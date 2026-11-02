@@ -15,7 +15,7 @@ open Set Polynomial Reconstruction Filter Topology
 
 /-- On every open pole-free interval a nonconstant rational function has
 a compact subinterval with upper and inverse Lipschitz bounds. -/
-private theorem regular_interval (R : RatFunc ℝ) (hn : R ∉ Set.range (RatFunc.C : ℝ →+* RatFunc ℝ))
+theorem regular_interval (R : RatFunc ℝ) (hn : R ∉ Set.range (RatFunc.C : ℝ →+* RatFunc ℝ))
     {a b : ℝ} (hab : a < b) (hpole : ∀ x ∈ Ioo a b, R.denom.eval x ≠ 0) :
     ∃ l u m M : ℝ, l < u ∧ Icc l u ⊆ Ioo a b ∧ 0 < m ∧ 0 ≤ M ∧
       (∀ x ∈ Icc l u, ∀ y ∈ Icc l u,
@@ -84,7 +84,7 @@ private theorem regular_interval (R : RatFunc ℝ) (hn : R ∉ Set.range (RatFun
     exact Convex.norm_image_sub_le_of_norm_deriv_le diff (fun z hz => (sub z hz).2.2.le) (convex_Icc l u) hy hx
 
 /-- The only omitted coefficient of the denominator is its leading coefficient, one. -/
-private theorem good_of_free (R : RatFunc ℝ) (h : ∀ w, ScaleApproximable
+theorem good_of_free (R : RatFunc ℝ) (h : ∀ w, ScaleApproximable
     (freeCoefficients R.num R.denom R.num.natDegree R.denom.natDegree w)) :
     (∀ j, ScaleApproximable (R.num.coeff j)) ∧ (∀ j, ScaleApproximable (R.denom.coeff j)) := by
   have rat0 : ScaleApproximable 0 := by simpa using rational_scaleApproximable 0
