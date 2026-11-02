@@ -77,4 +77,38 @@ theorem exact_preservation_polynomial_fibers_domain (R : RatFunc ℝ)
     apply (exact_preservation_on_domain_iff R hn).mpr
     exact ⟨hcoeff, (rationalFiberFreeOn_iff_polynomial R (fun _ hx => hx)).mpr hzeros⟩
 
+/-- Corollary 1.4 on any nonempty open pole-free set (in particular on
+unbounded open intervals). The literal normalized-polynomial condition
+is uniform in the rational fiber parameter. -/
+theorem exact_preservation_polynomial_fibers_open (R : RatFunc ℝ)
+    (hn : R ∉ Set.range (RatFunc.C : ℝ →+* RatFunc ℝ))
+    {U : Set ℝ} (hopen : IsOpen U) (hne : U.Nonempty)
+    (hsub : U ⊆ realDomain R) :
+    MailletOn R U ↔
+      R ∈ Set.range (coefficientEmbedding coefficientSubfield) ∧
+        (∀ t : ℚ, ∀ x : ℝ, x ∈ U → Liouville x →
+          (R.num - Polynomial.C (t : ℝ) * R.denom).eval x ≠ 0) := by
+  constructor
+  · intro hmap
+    obtain ⟨a, b, hab, hI⟩ := hopen.exists_Ioo_subset hne
+    have hpole : ∀ x ∈ Ioo a b, R.denom.eval x ≠ 0 :=
+      fun x hx => hsub (hI hx)
+    have hlocal : MailletOn R (Ioo a b) :=
+      fun x hx hL => hmap x (hI hx) hL
+    have hcoeff : R ∈ Set.range (coefficientEmbedding coefficientSubfield) :=
+      ((exact_preservation_on_interval_iff R hn hab hpole).mp hlocal).1
+    have hfiber : RationalFiberFreeOn R U :=
+      fun x hx hL hr => (hmap x hx hL).irrational hr
+    exact ⟨hcoeff, (rationalFiberFreeOn_iff_polynomial R hsub).mp hfiber⟩
+  · rintro ⟨hcoeff, hzero⟩ x hx hL
+    obtain ⟨hP, hQ⟩ :=
+      (definedOver_iff_normalized_coefficients coefficientSubfield R).mp hcoeff
+    have hE : rationalOrLiouville (R.eval (RingHom.id ℝ) x) :=
+      evaluation_of_coefficients R.num R.denom hP hQ hL (hsub hx)
+    have hfiber : RationalFiberFreeOn R U :=
+      (rationalFiberFreeOn_iff_polynomial R hsub).mpr hzero
+    rcases hE with hr | hLi
+    · exact (hfiber x hx hL hr).elim
+    · exact hLi
+
 end MahlerLeanII
