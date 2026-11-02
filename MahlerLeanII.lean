@@ -26,3 +26,4 @@ import MahlerLeanII.SparseCantorBranches
 import MahlerLeanII.SparseCantorSubtree
 import MahlerLeanII.SparseCantorTopology
 import MahlerLeanII.SparseCantor
+import MahlerLeanII.RationalCantorEscape
