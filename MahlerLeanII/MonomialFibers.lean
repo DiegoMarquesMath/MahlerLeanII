@@ -29,7 +29,7 @@ theorem monomial_rationalOrLiouville
     rationalOrLiouville (σ * ξ ^ m) := by
   have hp : ∀ j : ℕ, ScaleApproximable ((Polynomial.monomial m σ).coeff j) := by
     intro j
-    by_cases h : j = m
+    by_cases h : m = j
     · subst j
       simpa using (mem_coefficientSubfield σ).mp hσ
     · simpa [Polynomial.coeff_monomial, h] using
@@ -71,7 +71,7 @@ theorem monomial_preserves_of_nonzero_fibers
   have hx0 : ξ ≠ 0 := by
     intro h
     apply hξ.irrational
-    exact ⟨0, by simpa [h]⟩
+    exact ⟨0, by simp [h]⟩
   have hprod : σ * ξ ^ m ≠ 0 := mul_ne_zero hσ0 (pow_ne_zero m hx0)
   by_cases ht : t = 0
   · intro heq
