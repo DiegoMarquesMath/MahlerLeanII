@@ -90,7 +90,7 @@ theorem exists_sparse_binary_step {f : ℝ → ℝ} {I : Set ℝ} {M L : ℝ} {t
   have hbudget := (div_le_iff₀ wpos).1 ((le_max_left _ _).trans hth : 64*C/W ≤ (S:ℝ))
   have hsize := (div_le_iff₀ wpos).1
     ((le_max_left _ _).trans ((le_max_right _ _).trans hth) : 4/W ≤ (S:ℝ))
-  have hnext : 256*L*(2:ℝ)^A ≤ S :=
+  have hnext : 384*L*(2:ℝ)^A ≤ S :=
     (le_max_right _ _).trans ((le_max_right _ _).trans hth)
   let all := MahlerLean.sourceFractions v.l mid S
   let bad := all.filter (Resonant f M t S A v.H)
