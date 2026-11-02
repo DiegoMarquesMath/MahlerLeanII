@@ -59,7 +59,11 @@ run_cmd do
     `MahlerLeanII.rational_classification,
     `MahlerLeanII.Escape.exists_sparse_binary_step,
     `MahlerLeanII.Escape.cantorLimitSet_nonempty,
-    `MahlerLeanII.Escape.cantorLimitSet_compact]
+    `MahlerLeanII.Escape.cantorLimitSet_compact,
+    `MahlerLeanII.Escape.cantorLimitSet_liouville,
+    `MahlerLeanII.Escape.cantorLimitSet_target_avoidance,
+    `MahlerLeanII.Escape.cantorLimitSet_image_outside_E,
+    `MahlerLeanII.Escape.cantorLimitSet_irrationalityExponent_le]
   for name in required do
     unless env.contains name do
       throwError "Required declaration missing: {name}"
