@@ -61,7 +61,8 @@ run_cmd do
     `MahlerLeanII.exact_preservation_on_domain_iff,
     `MahlerLeanII.rationalFiberFreeOn_iff_polynomial,
     `MahlerLeanII.exact_preservation_polynomial_fibers_interval,
-    `MahlerLeanII.exact_preservation_polynomial_fibers_domain]
+    `MahlerLeanII.exact_preservation_polynomial_fibers_domain,
+    `MahlerLeanII.exact_preservation_polynomial_fibers_open]
   for name in required do
     unless env.contains name do
       throwError "Required declaration missing: {name}"
