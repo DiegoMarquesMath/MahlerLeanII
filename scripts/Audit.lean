@@ -58,7 +58,10 @@ run_cmd do
     `MahlerLeanII.escape_of_bad_coefficients,
     `MahlerLeanII.rational_classification,
     `MahlerLeanII.exact_preservation_on_interval_iff,
-    `MahlerLeanII.exact_preservation_on_domain_iff]
+    `MahlerLeanII.exact_preservation_on_domain_iff,
+    `MahlerLeanII.rationalFiberFreeOn_iff_polynomial,
+    `MahlerLeanII.exact_preservation_polynomial_fibers_interval,
+    `MahlerLeanII.exact_preservation_polynomial_fibers_domain]
   for name in required do
     unless env.contains name do
       throwError "Required declaration missing: {name}"
