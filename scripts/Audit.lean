@@ -63,7 +63,10 @@ run_cmd do
     `MahlerLeanII.Escape.cantorLimitSet_liouville,
     `MahlerLeanII.Escape.cantorLimitSet_target_avoidance,
     `MahlerLeanII.Escape.cantorLimitSet_image_outside_E,
-    `MahlerLeanII.Escape.cantorLimitSet_irrationalityExponent_le]
+    `MahlerLeanII.Escape.cantorLimitSet_irrationalityExponent_le,
+    `MahlerLeanII.Escape.cantorLimitSet_perfect,
+    `MahlerLeanII.Escape.cantorLimitSet_isTotallyDisconnected,
+    `MahlerLeanII.Escape.cantor_escape_of_sparse_count]
   for name in required do
     unless env.contains name do
       throwError "Required declaration missing: {name}"
