@@ -182,13 +182,15 @@ theorem exists_sparse_binary_step {f : ℝ → ℝ} {I : Set ℝ} {M L : ℝ} {t
   let lc : SparseNode I L t := ⟨lo,leftU,hleftU,
     fun _ hx => v.within (hchild _ (hleft _ hx)),
     T,hS.trans ST,by
-      change L*((T:ℝ)^(t+1))⁻¹ ≤ (leftU-lo)/32
-      convert tail using 1 <;> dsimp [leftU] <;> ring⟩
+      convert tail using 1
+      dsimp [leftU]
+      ring⟩
   let rc : SparseNode I L t := ⟨rightL,hi,hrightL,
     fun _ hx => v.within (hchild _ (hright _ hx)),
     T,hS.trans ST,by
-      change L*((T:ℝ)^(t+1))⁻¹ ≤ (hi-rightL)/32
-      convert tail using 1 <;> dsimp [rightL] <;> ring⟩
+      convert tail using 1
+      dsimp [rightL]
+      ring⟩
 
   have src : ∀ x ∈ Icc lo hi,
       0 < |x-(r:ℝ)| ∧ |x-(r:ℝ)| < ((r.den:ℝ)^(j+3))⁻¹ := by
