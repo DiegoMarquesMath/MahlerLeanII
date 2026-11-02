@@ -56,7 +56,8 @@ run_cmd do
     `MahlerLeanII.definedOver_iff_normalized_coefficients,
     `MahlerLeanII.evaluation_of_coefficients,
     `MahlerLeanII.escape_of_bad_coefficients,
-    `MahlerLeanII.rational_classification]
+    `MahlerLeanII.rational_classification,
+    `MahlerLeanII.Escape.exists_sparse_binary_step]
   for name in required do
     unless env.contains name do
       throwError "Required declaration missing: {name}"
