@@ -66,7 +66,9 @@ run_cmd do
     `MahlerLeanII.Escape.cantorLimitSet_irrationalityExponent_le,
     `MahlerLeanII.Escape.cantorLimitSet_perfect,
     `MahlerLeanII.Escape.cantorLimitSet_isTotallyDisconnected,
-    `MahlerLeanII.Escape.cantor_escape_of_sparse_count]
+    `MahlerLeanII.Escape.cantor_escape_of_sparse_count,
+    `MahlerLeanII.rational_cantor_escape_of_bad_coefficients,
+    `MahlerLeanII.rational_cantor_escape]
   for name in required do
     unless env.contains name do
       throwError "Required declaration missing: {name}"
