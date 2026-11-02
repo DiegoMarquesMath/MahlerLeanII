@@ -20,3 +20,5 @@ import MahlerLeanII.RationalCoefficients
 import MahlerLeanII.RationalEvaluation
 import MahlerLeanII.RationalEscape
 import MahlerLeanII.Classification
+import MahlerLeanII.ExactPreservation
+import MahlerLeanII.PolynomialFibers
