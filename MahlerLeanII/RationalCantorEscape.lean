@@ -58,8 +58,7 @@ theorem rational_cantor_escape_of_bad_coefficients
   refine ⟨K,B,hne,hcomp,hperf,hdisc,hsubset.trans hsub,hB,
     hsource,?_,houtside,?_⟩
   · intro x hx
-    simpa only [Nat.add_comm, Nat.add_left_comm, Nat.add_assoc]
-      using htarget x hx
+    exact htarget x hx
   · intro x hx
     exact hexp x hx
 
