@@ -50,6 +50,7 @@ theorem cantor_escape_of_sparse_count {f : ℝ → ℝ} {l u M : ℝ} {t : ℕ}
       (sub_nonneg.mpr hlu.le)
     rw [← div_eq_mul_inv, div_le_div_iff₀ (pow_pos hp _)]
     nlinarith only [hh,hz]
+    norm_num
   let d : SparseBinaryInputs f := {
     I := Icc l u
     M := M
