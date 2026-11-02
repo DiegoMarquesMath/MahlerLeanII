@@ -13,7 +13,7 @@ depth definitionally simple.
 noncomputable section
 namespace MahlerLeanII.Escape
 
-open Set
+open Set Counting
 
 /-- Input data for the sparse-scale binary construction. The quantitative
 counting estimate is a proof field, not an axiom or assumed conclusion. -/
@@ -47,7 +47,7 @@ noncomputable def cantorStage {f : ℝ → ℝ} (d : SparseBinaryInputs f) :
 /-- The chosen binary transition at a node. -/
 noncomputable def cantorTransition {f : ℝ → ℝ} (d : SparseBinaryInputs f)
     (n : ℕ) (omega : CantorPath n) :
-    SparseBinaryStep (cantorStage d n omega) n :=
+    SparseBinaryStep (f := f) (cantorStage d n omega) n :=
   Classical.choice (exists_sparse_binary_step d.hM d.ht d.hlip d.count (cantorStage d n omega) n)
 
 theorem cantorStage_succ {f : ℝ → ℝ} (d : SparseBinaryInputs f)
